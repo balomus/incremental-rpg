@@ -1,11 +1,16 @@
+import PlayerInfo, { Info } from "../components/PlayerInfo";
 import "../styles/App.css";
+import mockPlayerInfo from "../mocks/PlayerInfo.json";
+import { Button } from "antd";
+import { Fragment } from "react";
 
 function App() {
+  const mockPlayer = mockPlayerInfo as Info;
+  console.log("mockPlayer", mockPlayer);
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello</h1>
-      <p className="p-2">test</p>
-    </>
+    <div className={"m-5"}>
+      <PlayerInfo {...mockPlayer} />
+    </div>
   );
 }
 

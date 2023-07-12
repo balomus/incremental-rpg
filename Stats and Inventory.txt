@@ -1,0 +1,16 @@
+Proposed:
+Str - Increase damage of Str based weapons
+Dex - Increase damage of Dex based weapons
+Int - Increase damage of damage dealing spells
+Wis - Increase effectiveness of healing spells
+Con - Increase maximum HP
+Def - Decrease damage of physical attacks
+MDf - Decrease damage of magical attacks
+
+Inventory Slots:
+Head
+Chest
+Hands
+Feet
+Accessory
+Weapon

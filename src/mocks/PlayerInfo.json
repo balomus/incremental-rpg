@@ -1,0 +1,10 @@
+{
+  "name": "Balomus",
+  "level": 1,
+  "currentExperience": 1,
+  "maxExperience": 100,
+  "currentHealth": 75,
+  "maxHealth": 100,
+  "currentMana": 50,
+  "maxMana": 100
+}
