@@ -1,5 +1,7 @@
-import { useState } from "react";
-import Bar from "./Bar";
+import { useEffect, useState } from "react";
+import NameAndLevel from "./NameAndLevel";
+import Bars from "./Bars";
+import { Button } from "antd";
 
 export interface Info {
   name: string;
@@ -12,35 +14,37 @@ export interface Info {
   maxMana: number;
 }
 
-const PlayerInfo = (player: Info) => {
-  console.log("player", player);
-
+const PlayerInfo = ({ ...player }: Info) => {
   const [name, setName] = useState(player.name);
   const [level, setLevel] = useState(player.level);
   const [experience, setExperience] = useState(player.currentExperience);
   const [maxExperience, setMaxExperience] = useState(player.maxExperience);
+  const [currentHealth, setCurrentHealth] = useState(player.currentHealth);
+  const [maxHealth, setMaxHealth] = useState(player.maxHealth);
+  const [currentMana, setCurrentMana] = useState(player.currentMana);
+  const [maxMana, setMaxMana] = useState(player.maxMana);
 
   return (
     <div className="flex items-center border-transparent border-2 rounded-md p-3 mb-5 bg-white/10">
-      <div className="pr-3">
-        <div className="text-xl">{name}</div>
-        <div>Level {level}</div>
-        <div>
-          {experience} / {maxExperience}
-        </div>
-      </div>
-      <div className="flex flex-col grow">
-        <Bar
-          type="health"
-          currentValue={player.currentHealth}
-          maxValue={player.maxHealth}
-        />
-        <Bar
-          type="mana"
-          currentValue={player.currentMana}
-          maxValue={player.maxMana}
-        />
-      </div>
+      <NameAndLevel
+        name={name}
+        level={level}
+        experience={experience}
+        maxExperience={maxExperience}
+      />
+      <Bars
+        currentHealth={currentHealth}
+        maxHealth={maxHealth}
+        currentMana={currentMana}
+        maxMana={maxMana}
+      />
+      <Button
+        onClick={() => {
+          setCurrentHealth(currentHealth - 5);
+        }}
+      >
+        damage
+      </Button>
     </div>
   );
 };
