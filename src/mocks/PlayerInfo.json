@@ -2,9 +2,11 @@
   "name": "Balomus",
   "level": 1,
   "currentExperience": 1,
-  "maxExperience": 100,
-  "currentHealth": 75,
-  "maxHealth": 100,
-  "currentMana": 50,
-  "maxMana": 100
+  "maxExperience": 10,
+  "currentHealth": 9,
+  "maxHealth": 10,
+  "currentMana": 9,
+  "maxMana": 10,
+  "healthIncrement": 1,
+  "manaIncrement": 1
 }
