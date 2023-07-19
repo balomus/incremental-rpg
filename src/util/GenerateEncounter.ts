@@ -1,7 +1,21 @@
-const generateEncounter = (
+import Enemy from "../types/Enemy";
+import combinedEnemies from "../components/Enemies/combinedEnemies";
+
+export const generateEncounter = (
   numberOfEnemies: number,
   elligibleEnemies: string[]
 ) => {
-  console.log("numOfEnemies ", numberOfEnemies);
-  console.log("elligibleEnemies ", elligibleEnemies);
+  let encounter = [];
+  for (let i = 0; i < numberOfEnemies; i++) {
+    encounter.push(findEnemy(pickRandomEnemyFromList(elligibleEnemies)));
+  }
+  console.log(encounter);
+};
+
+const findEnemy = (enemyName: string): Enemy => {
+  return combinedEnemies.find(({ name }) => name === enemyName) as Enemy;
+};
+
+const pickRandomEnemyFromList = (listOfEnemies: string[]): string => {
+  return listOfEnemies[Math.floor(Math.random() * listOfEnemies.length)];
 };

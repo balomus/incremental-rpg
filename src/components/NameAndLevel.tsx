@@ -3,6 +3,7 @@ interface NameAndLevelProps {
   level: number;
   experience: number;
   maxExperience: number;
+  gold: number;
 }
 
 const NameAndLevel = ({
@@ -10,14 +11,16 @@ const NameAndLevel = ({
   level,
   experience,
   maxExperience,
+  gold,
 }: NameAndLevelProps) => {
   return (
     <div className="pr-3">
       <div className="text-xl">{name}</div>
       <div>Level {level}</div>
       <div>
-        {experience} / {maxExperience}
+        XP: {experience} / {maxExperience}
       </div>
+      <div>Gold: {gold}</div>
     </div>
   );
 };

@@ -3,6 +3,7 @@
   "level": 1,
   "currentExperience": 1,
   "maxExperience": 10,
+  "gold": 0,
   "currentHealth": 9,
   "maxHealth": 10,
   "currentMana": 9,

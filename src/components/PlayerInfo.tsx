@@ -11,6 +11,7 @@ const PlayerInfo = ({ ...player }: Info) => {
         level={player.level}
         experience={player.currentExperience}
         maxExperience={player.maxExperience}
+        gold={player.gold}
       />
       <Bars
         currentHealth={player.currentHealth}

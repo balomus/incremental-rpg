@@ -12,6 +12,7 @@ function App() {
   const [level, setLevel] = useState(player.level);
   const [experience, setExperience] = useState(player.currentExperience);
   const [maxExperience, setMaxExperience] = useState(player.maxExperience);
+  const [gold, setGold] = useState(player.gold);
   const [currentHealth, setCurrentHealth] = useState(player.currentHealth);
   const [maxHealth, setMaxHealth] = useState(player.maxHealth);
   const [currentMana, setCurrentMana] = useState(player.currentMana);
@@ -39,6 +40,7 @@ function App() {
         level={level}
         currentExperience={experience}
         maxExperience={maxExperience}
+        gold={gold}
         currentHealth={currentHealth}
         maxHealth={maxHealth}
         currentMana={currentMana}
