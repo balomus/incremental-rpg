@@ -1,5 +1,7 @@
+import { Dispatch, SetStateAction } from "react";
 import { Button } from "antd";
 import { generateEncounter } from "../util/GenerateEncounter";
+import Enemy from "../types/EnemyType";
 
 interface CombatAreaProps {
   name: string;
@@ -7,6 +9,7 @@ interface CombatAreaProps {
   minNumberOfEnemies: number;
   maxNumberOfEnemies: number;
   elligibleEnemies: string[];
+  setEncounter: Dispatch<SetStateAction<Enemy[]>>;
 }
 
 const getNumberOfEnemies = (min: number, max: number) => {
@@ -22,15 +25,17 @@ const CombatArea = ({ ...props }: CombatAreaProps) => {
       <div>Required Level - {props.levelRequirement}</div>
       <div>
         <Button
-          onClick={() =>
-            generateEncounter(
-              getNumberOfEnemies(
-                props.minNumberOfEnemies,
-                props.maxNumberOfEnemies
-              ),
-              ["Rat", "Slime", "Snake"]
-            )
-          }
+          onClick={() => {
+            props.setEncounter(
+              generateEncounter(
+                getNumberOfEnemies(
+                  props.minNumberOfEnemies,
+                  props.maxNumberOfEnemies
+                ),
+                props.elligibleEnemies
+              )
+            );
+          }}
         >
           Start
         </Button>

@@ -6,22 +6,31 @@ import Tick from "../util/Tick";
 
 import { Button } from "antd";
 import CombatAreas from "../components/CombatAreas";
+import Encounter from "../components/Encounter";
+import Enemy from "../types/EnemyType";
 
 function App() {
+  // Player state
   const [name, setName] = useState(player.name);
   const [level, setLevel] = useState(player.level);
-  const [experience, setExperience] = useState(player.currentExperience);
+  const [experience, setExperience] = useState(player.experience);
   const [maxExperience, setMaxExperience] = useState(player.maxExperience);
   const [gold, setGold] = useState(player.gold);
   const [currentHealth, setCurrentHealth] = useState(player.currentHealth);
   const [maxHealth, setMaxHealth] = useState(player.maxHealth);
   const [currentMana, setCurrentMana] = useState(player.currentMana);
   const [maxMana, setMaxMana] = useState(player.maxMana);
-
   const [healthIncrement, setHealthIncrement] = useState(
     player.healthIncrement
   );
   const [manaIncrement, setManaIncrement] = useState(player.manaIncrement);
+
+  // Encounter state
+  const [encounter, setEncounter] = useState<Enemy[]>([]);
+
+  useEffect(() => {
+    console.log("encounter ", encounter);
+  }, [encounter]);
 
   return (
     <div className={"m-5"}>
@@ -48,14 +57,12 @@ function App() {
         healthIncrement={healthIncrement}
         manaIncrement={manaIncrement}
       />
-      <CombatAreas />
-      {/* <Button
-        onClick={() => {
-          setCurrentHealth(currentHealth - 5);
-        }}
-      >
-        damage
-      </Button> */}
+      {encounter.length <= 0 ? (
+        <>LT or EQ to 0</>
+      ) : (
+        <Encounter encounter={encounter} />
+      )}
+      <CombatAreas setEncounter={setEncounter} />
     </div>
   );
 }

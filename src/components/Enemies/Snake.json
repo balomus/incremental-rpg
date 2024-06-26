@@ -1,13 +1,8 @@
 {
   "name": "Snake",
   "level": 1,
-  "strength": 3,
-  "dexterity": 1,
-  "intelligence": 1,
-  "wisdom": 1,
-  "constitution": 1,
-  "defense": 1,
-  "magicDefense": 1,
+  "health": 3,
+  "damage": 2,
   "experienceYield": 1,
   "goldYield": 2
 }

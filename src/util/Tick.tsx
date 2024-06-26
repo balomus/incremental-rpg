@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction, useContext, useEffect } from "react";
+import PlayerContext from "../context/player";
 
 interface TickProps {
   currentHealth: number;
@@ -12,6 +13,8 @@ interface TickProps {
 }
 
 const Tick = ({ ...props }: TickProps) => {
+  const { setCurrentHealth } = useContext(PlayerContext)
+
   const addHealth = () => {
     props.setCurrentHealth(
       props.currentHealth + props.healthIncrement >= props.maxHealth

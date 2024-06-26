@@ -1,4 +1,4 @@
-import Enemy from "../types/Enemy";
+import Enemy from "../types/EnemyType";
 import combinedEnemies from "../components/Enemies/combinedEnemies";
 
 export const generateEncounter = (
@@ -10,6 +10,7 @@ export const generateEncounter = (
     encounter.push(findEnemy(pickRandomEnemyFromList(elligibleEnemies)));
   }
   console.log(encounter);
+  return encounter;
 };
 
 const findEnemy = (enemyName: string): Enemy => {

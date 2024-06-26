@@ -1,7 +1,7 @@
 {
   "name": "Balomus",
   "level": 1,
-  "currentExperience": 1,
+  "experience": 1,
   "maxExperience": 10,
   "gold": 0,
   "currentHealth": 9,

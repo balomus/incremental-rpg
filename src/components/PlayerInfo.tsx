@@ -1,7 +1,7 @@
 // import { useEffect } from "react";
 import NameAndLevel from "./NameAndLevel";
 import Bars from "./Bars";
-import Info from "../types/Info";
+import Info from "../types/InfoType";
 
 const PlayerInfo = ({ ...player }: Info) => {
   return (
