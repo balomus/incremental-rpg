@@ -1,19 +1,25 @@
 import { Dispatch, SetStateAction, useContext, useEffect } from "react";
-import PlayerContext from "../context/player";
+import PlayerContextProvider, {
+  PlayerContext,
+} from "../context/PlayerContextProvider";
 
-interface TickProps {
-  currentHealth: number;
-  maxHealth: number;
-  setCurrentHealth: Dispatch<SetStateAction<number>>;
-  healthIncrement: number;
-  currentMana: number;
-  maxMana: number;
-  setCurrentMana: Dispatch<SetStateAction<number>>;
-  manaIncrement: number;
-}
+// interface TickProps {
+//   currentHealth: number;
+//   maxHealth: number;
+//   setCurrentHealth: Dispatch<SetStateAction<number>>;
+//   healthIncrement: number;
+//   currentMana: number;
+//   maxMana: number;
+//   setCurrentMana: Dispatch<SetStateAction<number>>;
+//   manaIncrement: number;
+// }
 
-const Tick = ({ ...props }: TickProps) => {
-  const { setCurrentHealth } = useContext(PlayerContext)
+// const Tick = ({ ...props }: TickProps) => {
+const Tick = ({ ...props }) => {
+  // const { setCurrentHealth } = useContext(CurrentPlayerContext);
+  // const { currentHealth } = useContext(PlayerContext);
+  // console.log("currentHealth", currentHealth);
+  const { currentHealth } = useContext(PlayerContext);
 
   const addHealth = () => {
     props.setCurrentHealth(
