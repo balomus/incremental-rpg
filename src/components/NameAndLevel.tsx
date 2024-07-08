@@ -1,21 +1,6 @@
-// interface NameAndLevelProps {
-//   name: string;
-//   level: number;
-//   experience: number;
-//   maxExperience: number;
-//   gold: number;
-// }
-
 import { useContext } from "react";
 import { PlayerContext } from "../context/PlayerContextProvider";
 
-// const NameAndLevel = ({
-//   name,
-//   level,
-//   experience,
-//   maxExperience,
-//   gold,
-// }: NameAndLevelProps) => {
 const NameAndLevel = () => {
   const { player } = useContext(PlayerContext);
 

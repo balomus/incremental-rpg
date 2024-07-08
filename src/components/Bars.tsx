@@ -1,24 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Bar from "./Bar";
 import { PlayerContext } from "../context/PlayerContextProvider";
 
-// interface BarsProps {
-//   currentHealth: number;
-//   maxHealth: number;
-//   healthIncrement: number;
-//   currentMana: number;
-//   maxMana: number;
-//   manaIncrement: number;
-// }
-
-// const Bars = ({
-//   currentHealth,
-//   maxHealth,
-//   healthIncrement,
-//   currentMana,
-//   maxMana,
-//   manaIncrement,
-// }: BarsProps) => {
 const Bars = () => {
   const { player } = useContext(PlayerContext);
 

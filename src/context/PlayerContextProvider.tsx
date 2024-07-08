@@ -13,7 +13,6 @@ interface Player {
   maxMana: number;
   healthIncrement: number;
   manaIncrement: number;
-  // updatePlayer?: (player: Player) => void;
 }
 
 interface PlayerContextType {
@@ -34,8 +33,6 @@ const PlayerContextProvider = ({ children }: any) => {
     player: player,
     setPlayer: setPlayer,
   };
-
-  // console.log("name", player.name);
 
   return (
     <PlayerContext.Provider value={valueToShare}>

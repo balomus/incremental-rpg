@@ -19,19 +19,6 @@ function App() {
         <Tick />
         <PlayerInfo />
         {/* 
-        <PlayerInfo
-          name={name}
-          level={level}
-          currentExperience={experience}
-          maxExperience={maxExperience}
-          gold={gold}
-          currentHealth={currentHealth}
-          maxHealth={maxHealth}
-          currentMana={currentMana}
-          maxMana={maxMana}
-          healthIncrement={healthIncrement}
-          manaIncrement={manaIncrement}
-        />
         {encounter.length <= 0 ? (
           <>LT or EQ to 0</>
         ) : (
