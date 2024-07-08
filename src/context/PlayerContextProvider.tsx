@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import player from "../mocks/PlayerInfo.json";
+import initialPlayerInfo from "../mocks/PlayerInfo.json";
 
 interface Player {
   name: string;
@@ -13,74 +13,32 @@ interface Player {
   maxMana: number;
   healthIncrement: number;
   manaIncrement: number;
+  // updatePlayer?: (player: Player) => void;
 }
-// keep working on this, just started implementing the Player interface to simplify the playercontext below.
-// Look at Stephen Grider books code for reference.
 
 interface PlayerContextType {
-  name: string;
-  level: number;
-  experience: number;
-  maxExperience: number;
-  gold: number;
-  currentHealth: number;
-  maxHealth: number;
-  currentMana: number;
-  maxMana: number;
-  healthIncrement: number;
-  manaIncrement: number;
+  player: Player;
+  setPlayer: (player: Player) => void;
 }
 
-// export const PlayerContext = createContext<PlayerContextType | null>(null);
 export const PlayerContext = createContext<PlayerContextType>({
-  name: player.name,
-  level: player.level,
-  experience: player.experience,
-  maxExperience: player.maxExperience,
-  gold: player.gold,
-  currentHealth: player.currentHealth,
-  maxHealth: player.maxHealth,
-  currentMana: player.currentMana,
-  maxMana: player.maxMana,
-  healthIncrement: player.healthIncrement,
-  manaIncrement: player.manaIncrement,
+  player: initialPlayerInfo,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setPlayer: () => {},
 });
 
 const PlayerContextProvider = ({ children }: any) => {
-  // const [currentPlayer, setCurrentPlayer] = useState<PlayerContextType>(player);
+  const [player, setPlayer] = useState<Player>(initialPlayerInfo);
 
-  const [name, setName] = useState(player.name);
-  const [level, setLevel] = useState(player.level);
-  const [experience, setExperience] = useState(player.experience);
-  const [maxExperience, setMaxExperience] = useState(player.maxExperience);
-  const [gold, setGold] = useState(player.gold);
-  const [currentHealth, setCurrentHealth] = useState(player.currentHealth);
-  const [maxHealth, setMaxHealth] = useState(player.maxHealth);
-  const [currentMana, setCurrentMana] = useState(player.currentMana);
-  const [maxMana, setMaxMana] = useState(player.maxMana);
-  const [healthIncrement, setHealthIncrement] = useState(
-    player.healthIncrement
-  );
-  const [manaIncrement, setManaIncrement] = useState(player.manaIncrement);
+  const valueToShare = {
+    player: player,
+    setPlayer: setPlayer,
+  };
 
-  console.log("name", name);
+  // console.log("name", player.name);
 
   return (
-    <PlayerContext.Provider
-      value={{
-        name,
-        level,
-        experience,
-        maxExperience,
-        gold,
-        currentHealth,
-        maxHealth,
-        currentMana,
-        maxMana,
-        healthIncrement,
-        manaIncrement,
-      }}
-    >
+    <PlayerContext.Provider value={valueToShare}>
       {children}
     </PlayerContext.Provider>
   );

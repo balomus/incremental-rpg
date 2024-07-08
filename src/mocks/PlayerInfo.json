@@ -4,9 +4,9 @@
   "experience": 1,
   "maxExperience": 10,
   "gold": 0,
-  "currentHealth": 9,
+  "currentHealth": 5,
   "maxHealth": 10,
-  "currentMana": 9,
+  "currentMana": 5,
   "maxMana": 10,
   "healthIncrement": 1,
   "manaIncrement": 1
