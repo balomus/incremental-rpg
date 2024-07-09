@@ -4,7 +4,7 @@ interface BarsProps {
   type: "health" | "mana";
   currentValue: number;
   maxValue: number;
-  increment: number;
+  increment?: number;
 }
 
 const Bar = ({ type, currentValue, maxValue, increment }: BarsProps) => {
@@ -22,7 +22,7 @@ const Bar = ({ type, currentValue, maxValue, increment }: BarsProps) => {
         trailColor="#6D5D6E"
         strokeColor={type === "health" ? "#F87171" : "#3B82F6"}
       />
-      <div className="min-w-max">{increment} / second</div>
+      {increment && <div className="min-w-max">{increment} / second</div>}
     </div>
   );
 };

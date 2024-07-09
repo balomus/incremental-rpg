@@ -13,6 +13,7 @@ interface Player {
   maxMana: number;
   healthIncrement: number;
   manaIncrement: number;
+  strength: number;
 }
 
 interface PlayerContextType {

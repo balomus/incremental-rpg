@@ -9,6 +9,7 @@ import CombatAreas from "../components/CombatAreas";
 
 function App() {
   const [encounter, setEncounter] = useState<Enemy[]>([]);
+  const [encounterName, setEncounterName] = useState<string>("");
 
   useEffect(() => {
     // console.log("encounter ", encounter);
@@ -23,9 +24,12 @@ function App() {
         {encounter.length <= 0 ? (
           <>LT or EQ to 0</>
         ) : (
-          <Encounter encounter={encounter} />
+          <Encounter encounter={encounter} encounterName={encounterName} />
         )}
-        <CombatAreas setEncounter={setEncounter} />
+        <CombatAreas
+          setEncounter={setEncounter}
+          setEncounterName={setEncounterName}
+        />
       </div>
     </PlayerContextProvider>
   );

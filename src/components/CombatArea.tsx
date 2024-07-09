@@ -10,6 +10,7 @@ interface CombatAreaProps {
   maxNumberOfEnemies: number;
   elligibleEnemies: string[];
   setEncounter: Dispatch<SetStateAction<Enemy[]>>;
+  setEncounterName: Dispatch<SetStateAction<string>>;
 }
 
 const getNumberOfEnemies = (min: number, max: number) => {
@@ -27,6 +28,7 @@ const CombatArea = ({ ...props }: CombatAreaProps) => {
         <Button
           type="primary"
           onClick={() => {
+            props.setEncounterName(props.name);
             props.setEncounter(
               generateEncounter(
                 getNumberOfEnemies(
