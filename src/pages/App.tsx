@@ -15,7 +15,6 @@ function App() {
   return (
     <PlayerContextProvider>
       <div className={"m-5"}>
-        {/* Test */}
         <Tick />
         <PlayerInfo />
         {/* 

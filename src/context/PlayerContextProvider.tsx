@@ -22,8 +22,7 @@ interface PlayerContextType {
 
 export const PlayerContext = createContext<PlayerContextType>({
   player: initialPlayerInfo,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setPlayer: () => {},
+  setPlayer: () => undefined,
 });
 
 const PlayerContextProvider = ({ children }: any) => {
