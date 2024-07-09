@@ -5,11 +5,10 @@ export const generateEncounter = (
   numberOfEnemies: number,
   elligibleEnemies: string[]
 ) => {
-  let encounter = [];
+  const encounter = [];
   for (let i = 0; i < numberOfEnemies; i++) {
     encounter.push(findEnemy(pickRandomEnemyFromList(elligibleEnemies)));
   }
-  console.log(encounter);
   return encounter;
 };
 

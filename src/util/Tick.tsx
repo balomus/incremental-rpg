@@ -20,8 +20,6 @@ const Tick = () => {
           player.maxMana
         ),
       });
-      console.log("player.currentHealth", player.currentHealth);
-      console.log("tick ran");
 
       // END 1000ms TICK
     }, 1000);

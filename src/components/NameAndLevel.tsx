@@ -6,7 +6,7 @@ const NameAndLevel = () => {
 
   return (
     <div className="pr-3">
-      <div className="text-xl">{player.name}</div>
+      <h2 className="text-xl">{player.name}</h2>
       <div>Level {player.level}</div>
       <div>
         XP: {player.experience} / {player.maxExperience}
