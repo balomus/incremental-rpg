@@ -25,6 +25,7 @@ const CombatArea = ({ ...props }: CombatAreaProps) => {
       <div>Required Level - {props.levelRequirement}</div>
       <div>
         <Button
+          type="primary"
           onClick={() => {
             props.setEncounter(
               generateEncounter(

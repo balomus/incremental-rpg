@@ -4,6 +4,8 @@ import Enemy from "../types/EnemyType";
 import Tick from "../util/Tick";
 import PlayerContextProvider from "../context/PlayerContextProvider";
 import PlayerInfo from "../components/PlayerInfo";
+import Encounter from "../components/Encounter";
+import CombatAreas from "../components/CombatAreas";
 
 function App() {
   const [encounter, setEncounter] = useState<Enemy[]>([]);
@@ -17,13 +19,13 @@ function App() {
       <div className={"m-5"}>
         <Tick />
         <PlayerInfo />
-        {/* 
+
         {encounter.length <= 0 ? (
           <>LT or EQ to 0</>
         ) : (
           <Encounter encounter={encounter} />
         )}
-        <CombatAreas setEncounter={setEncounter} /> */}
+        <CombatAreas setEncounter={setEncounter} />
       </div>
     </PlayerContextProvider>
   );

@@ -16,7 +16,7 @@ const Encounter = ({ ...props }: EncounterProps) => {
           damage={enemy.damage}
           experienceYield={enemy.experienceYield}
           goldYield={enemy.goldYield}
-          key={enemy.name + i}
+          key={`${enemy.name}${i}`}
         />
         // <div key={`${enemy.name}${i}`}>{enemy.name}</div>
       ))}

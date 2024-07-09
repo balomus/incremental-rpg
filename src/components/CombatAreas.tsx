@@ -6,7 +6,7 @@ interface CombatAreasProps {
   setEncounter: Dispatch<SetStateAction<Enemy[]>>;
 }
 
-const CombatAreas = ({ ...props }) => {
+const CombatAreas = ({ ...props }: CombatAreasProps) => {
   return (
     <div className="border-transparent border-2 rounded-md p-3 mb-5 bg-white/10">
       <CombatArea
