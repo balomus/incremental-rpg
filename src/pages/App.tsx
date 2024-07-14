@@ -11,20 +11,18 @@ function App() {
   const [encounter, setEncounter] = useState<Enemy[]>([]);
   const [encounterName, setEncounterName] = useState<string>("");
 
-  useEffect(() => {
-    // console.log("encounter ", encounter);
-  }, [encounter]);
-
   return (
     <PlayerContextProvider>
       <div className={"m-5"}>
         <Tick />
         <PlayerInfo />
 
-        {encounter.length <= 0 ? (
-          <>LT or EQ to 0</>
-        ) : (
-          <Encounter encounter={encounter} encounterName={encounterName} />
+        {encounter.length > 0 && (
+          <Encounter
+            encounter={encounter}
+            encounterName={encounterName}
+            setEncounter={setEncounter}
+          />
         )}
         <CombatAreas
           setEncounter={setEncounter}

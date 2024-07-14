@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from "react";
 import CombatArea from "./CombatArea";
-import Enemy from "../types/EnemyType";
+import EnemyType from "../types/EnemyType";
 
 interface CombatAreasProps {
-  setEncounter: Dispatch<SetStateAction<Enemy[]>>;
+  setEncounter: Dispatch<SetStateAction<EnemyType[]>>;
   setEncounterName: Dispatch<SetStateAction<string>>;
 }
 
@@ -17,6 +17,15 @@ const CombatAreas = ({ ...props }: CombatAreasProps) => {
         minNumberOfEnemies={2}
         maxNumberOfEnemies={3}
         elligibleEnemies={["Rat", "Slime", "Snake"]}
+        setEncounter={props.setEncounter}
+        setEncounterName={props.setEncounterName}
+      />
+      <CombatArea
+        name={"Slime Cave"}
+        levelRequirement={1}
+        minNumberOfEnemies={4}
+        maxNumberOfEnemies={7}
+        elligibleEnemies={["Slime"]}
         setEncounter={props.setEncounter}
         setEncounterName={props.setEncounterName}
       />

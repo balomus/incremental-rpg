@@ -1,25 +1,42 @@
-import { useContext, useState } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 import EnemyType from "../../types/EnemyType";
 import Bar from "../Bar";
 import { Button } from "antd";
 import { PlayerContext } from "../../context/PlayerContextProvider";
 
-const Enemy = ({ ...props }: EnemyType) => {
-  const { player, setPlayer } = useContext(PlayerContext);
+interface EnemyProps {
+  enemy: EnemyType;
+  encounter: EnemyType[];
+  setEncounter: Dispatch<SetStateAction<EnemyType[]>>;
+}
 
-  const [enemyMaxHealth, setEnemyMaxHealth] = useState(props.health);
-  const [enemyCurrentHealth, setEnemyCurrentHealth] = useState(props.health);
+const Enemy = ({ ...props }: EnemyProps) => {
+  const { player, setPlayer } = useContext(PlayerContext);
+  const index = props.encounter.findIndex((e) => e.id === props.enemy.id);
+
+  const damageEnemy = (damage: number) => {
+    const newEncounterArray = props.encounter;
+    newEncounterArray[index].health -= damage;
+    props.setEncounter([...newEncounterArray]);
+  };
+
+  const damagePlayer = (damage: number) => {
+    setPlayer({
+      ...player,
+      currentHealth: player.currentHealth - damage,
+    });
+  };
 
   return (
     <div className="flex space-x-4 pb-4 items-center">
       <div className="w-32">
-        {props.name} (lvl {props.level})
+        {props.enemy.name} {props.enemy.id} (lvl {props.enemy.level})
       </div>
       <div className="flex flex-col grow justify-center">
         <Bar
           type="health"
-          currentValue={enemyCurrentHealth}
-          maxValue={enemyMaxHealth}
+          currentValue={props.enemy.health}
+          maxValue={props.enemy.maxHealth}
         />
       </div>
 
@@ -27,12 +44,8 @@ const Enemy = ({ ...props }: EnemyType) => {
         type="primary"
         danger
         onClick={() => {
-          setEnemyCurrentHealth(enemyCurrentHealth - player.strength);
-          setPlayer({
-            ...player,
-            currentHealth: player.currentHealth - props.damage,
-          });
-          // console.log("Attack clicked");
+          damagePlayer(props.enemy.damage);
+          damageEnemy(player.strength);
         }}
       >
         Attack
