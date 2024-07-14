@@ -3,6 +3,7 @@ import EnemyType from "../../types/EnemyType";
 import Bar from "../Bar";
 import { Button } from "antd";
 import { PlayerContext } from "../../context/PlayerContextProvider";
+import Player from "../../types/Player";
 
 interface EnemyProps {
   enemy: EnemyType;
@@ -13,17 +14,32 @@ interface EnemyProps {
 const Enemy = ({ ...props }: EnemyProps) => {
   const { player, setPlayer } = useContext(PlayerContext);
   const index = props.encounter.findIndex((e) => e.id === props.enemy.id);
+  const newEncounterArray = props.encounter;
+  const newPlayer = player;
+
+  const damagePlayer = (damage: number) => {
+    newPlayer.currentHealth -= damage;
+  };
 
   const damageEnemy = (damage: number) => {
-    const newEncounterArray = props.encounter;
     newEncounterArray[index].health -= damage;
+    if (newEncounterArray[index].health <= 0) {
+      killEnemy();
+    } else {
+      props.setEncounter([...newEncounterArray]);
+    }
+  };
+
+  const killEnemy = () => {
+    newPlayer.experience += props.enemy.experienceYield;
+    newPlayer.gold += props.enemy.goldYield;
+    newEncounterArray.splice(index, 1);
     props.setEncounter([...newEncounterArray]);
   };
 
-  const damagePlayer = (damage: number) => {
+  const updatePlayer = (newPlayer: Player) => {
     setPlayer({
-      ...player,
-      currentHealth: player.currentHealth - damage,
+      ...newPlayer,
     });
   };
 
@@ -46,6 +62,7 @@ const Enemy = ({ ...props }: EnemyProps) => {
         onClick={() => {
           damagePlayer(props.enemy.damage);
           damageEnemy(player.strength);
+          updatePlayer(newPlayer);
         }}
       >
         Attack

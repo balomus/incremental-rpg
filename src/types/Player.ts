@@ -10,4 +10,5 @@ export default interface Player {
   maxMana: number;
   healthIncrement: number;
   manaIncrement: number;
+  strength: number;
 }

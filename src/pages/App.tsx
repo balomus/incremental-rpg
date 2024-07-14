@@ -1,8 +1,10 @@
 import "../styles/App.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Enemy from "../types/EnemyType";
 import Tick from "../util/Tick";
-import PlayerContextProvider from "../context/PlayerContextProvider";
+import PlayerContextProvider, {
+  PlayerContext,
+} from "../context/PlayerContextProvider";
 import PlayerInfo from "../components/PlayerInfo";
 import Encounter from "../components/Encounter";
 import CombatAreas from "../components/CombatAreas";
@@ -10,6 +12,12 @@ import CombatAreas from "../components/CombatAreas";
 function App() {
   const [encounter, setEncounter] = useState<Enemy[]>([]);
   const [encounterName, setEncounterName] = useState<string>("");
+
+  const { player } = useContext(PlayerContext);
+
+  // useEffect(() => {
+  //   console.log("App useEffect ran");
+  // }, [player]);
 
   return (
     <PlayerContextProvider>
