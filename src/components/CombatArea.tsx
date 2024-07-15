@@ -12,6 +12,13 @@ interface CombatAreaProps {
   elligibleEnemies: string[];
   setEncounter: Dispatch<SetStateAction<EnemyType[]>>;
   setEncounterName: Dispatch<SetStateAction<string>>;
+  rewards?: Rewards;
+}
+
+interface Rewards {
+  gold?: number;
+  experience?: number;
+  items?: string[];
 }
 
 const getNumberOfEnemies = (min: number, max: number) => {
@@ -23,10 +30,36 @@ const getNumberOfEnemies = (min: number, max: number) => {
 const CombatArea = ({ ...props }: CombatAreaProps) => {
   const { player } = useContext(PlayerContext);
 
+  const getRewardString = () => {
+    let rewardsString = "";
+    const addComma = () => {
+      if (rewardsString !== "") {
+        rewardsString += ", ";
+      }
+    };
+
+    if (props.rewards?.gold) {
+      addComma();
+      rewardsString += `${props.rewards.gold} gold`;
+    }
+    if (props.rewards?.experience) {
+      addComma();
+      rewardsString += `${props.rewards.experience} experience`;
+    }
+    if (props.rewards?.items) {
+      props.rewards.items.map((item) => {
+        addComma();
+        rewardsString += item;
+      });
+    }
+    return rewardsString;
+  };
+
   return (
-    <div className="grid grid-cols-3 gap-4 pb-4 text-center">
+    <div className="grid grid-cols-4 gap-4 pb-4 text-center">
       <div>{props.name}</div>
-      <div>Required Level - {props.levelRequirement}</div>
+      <div>{props.levelRequirement}</div>
+      {props.rewards ? <>{getRewardString()}</> : <>N/A</>}
       <div>
         <Button
           type="primary"

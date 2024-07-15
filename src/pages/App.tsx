@@ -15,10 +15,6 @@ function App() {
 
   const { player } = useContext(PlayerContext);
 
-  // useEffect(() => {
-  //   console.log("App useEffect ran");
-  // }, [player]);
-
   return (
     <PlayerContextProvider>
       <div className={"m-5"}>
