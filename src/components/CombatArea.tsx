@@ -1,7 +1,8 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 import { Button } from "antd";
 import { generateEncounter } from "../util/GenerateEncounter";
 import EnemyType from "../types/EnemyType";
+import { PlayerContext } from "../context/PlayerContextProvider";
 
 interface CombatAreaProps {
   name: string;
@@ -20,8 +21,10 @@ const getNumberOfEnemies = (min: number, max: number) => {
 };
 
 const CombatArea = ({ ...props }: CombatAreaProps) => {
+  const { player } = useContext(PlayerContext);
+
   return (
-    <div className="flex w-full justify-around items-center">
+    <div className="grid grid-cols-3 gap-4 pb-4 text-center">
       <div>{props.name}</div>
       <div>Required Level - {props.levelRequirement}</div>
       <div>
@@ -39,6 +42,7 @@ const CombatArea = ({ ...props }: CombatAreaProps) => {
               )
             );
           }}
+          disabled={player.level < props.levelRequirement}
         >
           Start
         </Button>

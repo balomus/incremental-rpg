@@ -32,10 +32,12 @@ function App() {
             setEncounter={setEncounter}
           />
         )}
-        <CombatAreas
-          setEncounter={setEncounter}
-          setEncounterName={setEncounterName}
-        />
+        {encounter.length === 0 && (
+          <CombatAreas
+            setEncounter={setEncounter}
+            setEncounterName={setEncounterName}
+          />
+        )}
       </div>
     </PlayerContextProvider>
   );

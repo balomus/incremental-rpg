@@ -22,7 +22,7 @@ const CombatAreas = ({ ...props }: CombatAreasProps) => {
       />
       <CombatArea
         name={"Slime Cave"}
-        levelRequirement={1}
+        levelRequirement={2}
         minNumberOfEnemies={4}
         maxNumberOfEnemies={7}
         elligibleEnemies={["Slime"]}
