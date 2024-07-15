@@ -1,6 +1,7 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 import CombatArea from "./CombatArea";
 import EnemyType from "../types/EnemyType";
+import { PlayerContext } from "../context/PlayerContextProvider";
 
 interface CombatAreasProps {
   setEncounter: Dispatch<SetStateAction<EnemyType[]>>;
@@ -8,6 +9,8 @@ interface CombatAreasProps {
 }
 
 const CombatAreas = ({ ...props }: CombatAreasProps) => {
+  const { player } = useContext(PlayerContext);
+
   return (
     <div className="border-transparent border-2 rounded-md p-3 mb-5 bg-white/10">
       <h2 className="text-xl pb-2">Select your encounter:</h2>
@@ -24,7 +27,7 @@ const CombatAreas = ({ ...props }: CombatAreasProps) => {
         elligibleEnemies={["Rat", "Slime", "Snake"]}
         setEncounter={props.setEncounter}
         setEncounterName={props.setEncounterName}
-        rewards={{ gold: 10, experience: 4 }}
+        rewards={{ gold: 5, experience: 5 }}
       />
       <CombatArea
         name={"Slime Cave"}
@@ -34,12 +37,12 @@ const CombatAreas = ({ ...props }: CombatAreasProps) => {
         elligibleEnemies={["Slime"]}
         setEncounter={props.setEncounter}
         setEncounterName={props.setEncounterName}
-        rewards={{ experience: 20 }}
+        rewards={{ experience: 10 }}
       />
 
       <CombatArea
         name={"test1"}
-        levelRequirement={2}
+        levelRequirement={3}
         minNumberOfEnemies={4}
         maxNumberOfEnemies={7}
         elligibleEnemies={["Slime"]}
@@ -53,7 +56,7 @@ const CombatAreas = ({ ...props }: CombatAreasProps) => {
       />
       <CombatArea
         name={"test2"}
-        levelRequirement={2}
+        levelRequirement={4}
         minNumberOfEnemies={4}
         maxNumberOfEnemies={7}
         elligibleEnemies={["Slime"]}

@@ -55,8 +55,10 @@ const CombatArea = ({ ...props }: CombatAreaProps) => {
     return rewardsString;
   };
 
+  if (player.level + 1 < props.levelRequirement) return <></>;
+
   return (
-    <div className="grid grid-cols-4 gap-4 pb-4 text-center">
+    <div className="grid grid-cols-4 gap-4 pb-4 text-center items-center">
       <div>{props.name}</div>
       <div>{props.levelRequirement}</div>
       {props.rewards ? <>{getRewardString()}</> : <>N/A</>}
