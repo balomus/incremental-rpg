@@ -4,6 +4,8 @@ import { PlayerContext } from "../context/PlayerContextProvider";
 const Tick = () => {
   const { player, setPlayer } = useContext(PlayerContext);
 
+  const tickInterval = 1000;
+
   useEffect(() => {
     const interval = setInterval(() => {
       // START 1000ms TICK
@@ -22,7 +24,7 @@ const Tick = () => {
       });
 
       // END 1000ms TICK
-    }, 1000);
+    }, tickInterval);
 
     return () => {
       clearInterval(interval);
