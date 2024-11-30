@@ -4,12 +4,12 @@ import TEnemyType from "../types/TEnemyType";
 import { PlayerContext } from "../context/PlayerContextProvider";
 
 interface CombatAreasProps {
-  setEncounter: Dispatch<SetStateAction<TEnemyType[]>>;
+  setEnemies: Dispatch<SetStateAction<TEnemyType[]>>;
   setEncounterName: Dispatch<SetStateAction<string>>;
 }
 
 const CombatAreas = ({ ...props }: CombatAreasProps) => {
-  const { player } = useContext(PlayerContext);
+  // const { player } = useContext(PlayerContext);
 
   return (
     <div className="border-transparent border-2 rounded-md p-3 mb-5 bg-white/10">
@@ -25,7 +25,7 @@ const CombatAreas = ({ ...props }: CombatAreasProps) => {
         minNumberOfEnemies={2}
         maxNumberOfEnemies={3}
         elligibleEnemies={["Rat", "Slime", "Snake"]}
-        setEncounter={props.setEncounter}
+        setEncounter={props.setEnemies}
         setEncounterName={props.setEncounterName}
         rewards={{ gold: 5, experience: 5 }}
       />
@@ -35,7 +35,7 @@ const CombatAreas = ({ ...props }: CombatAreasProps) => {
         minNumberOfEnemies={4}
         maxNumberOfEnemies={7}
         elligibleEnemies={["Slime"]}
-        setEncounter={props.setEncounter}
+        setEncounter={props.setEnemies}
         setEncounterName={props.setEncounterName}
         rewards={{ experience: 10 }}
       />
@@ -46,7 +46,7 @@ const CombatAreas = ({ ...props }: CombatAreasProps) => {
         minNumberOfEnemies={4}
         maxNumberOfEnemies={7}
         elligibleEnemies={["Slime"]}
-        setEncounter={props.setEncounter}
+        setEncounter={props.setEnemies}
         setEncounterName={props.setEncounterName}
         rewards={{
           items: ["Fire sword", "Ice sword"],
@@ -60,7 +60,7 @@ const CombatAreas = ({ ...props }: CombatAreasProps) => {
         minNumberOfEnemies={4}
         maxNumberOfEnemies={7}
         elligibleEnemies={["Slime"]}
-        setEncounter={props.setEncounter}
+        setEncounter={props.setEnemies}
         setEncounterName={props.setEncounterName}
       />
     </div>

@@ -6,7 +6,7 @@ import Tick from "../util/Tick";
 import TEnemyType from "../types/TEnemyType";
 
 const MainPage = () => {
-  const [encounter, setEncounter] = useState<TEnemyType[]>([]);
+  const [enemies, setEnemies] = useState<TEnemyType[]>([]);
   const [encounterName, setEncounterName] = useState<string>("");
 
   return (
@@ -14,16 +14,16 @@ const MainPage = () => {
       <Tick />
       <PlayerInfo />
 
-      {encounter.length > 0 && (
+      {enemies.length > 0 && (
         <Encounter
-          encounter={encounter}
+          enemies={enemies}
           encounterName={encounterName}
-          setEncounter={setEncounter}
+          setEnemies={setEnemies}
         />
       )}
-      {encounter.length === 0 && (
+      {enemies.length === 0 && (
         <CombatAreas
-          setEncounter={setEncounter}
+          setEnemies={setEnemies}
           setEncounterName={setEncounterName}
         />
       )}

@@ -33,6 +33,9 @@ const Enemy = ({ ...props }: EnemyProps) => {
   const killEnemy = () => {
     newPlayer.experience += props.enemy.experienceYield;
     newPlayer.gold += props.enemy.goldYield;
+    if (newEncounterArray.length === 1) {
+      //
+    }
     newEncounterArray.splice(index, 1);
     props.setEncounter([...newEncounterArray]);
   };

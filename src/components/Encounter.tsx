@@ -3,16 +3,16 @@ import TEnemyType from "../types/TEnemyType";
 import Enemy from "./Enemies/Enemy";
 
 interface EncounterProps {
-  encounter: TEnemyType[];
+  enemies: TEnemyType[];
   encounterName: string;
-  setEncounter: Dispatch<SetStateAction<TEnemyType[]>>;
+  setEnemies: Dispatch<SetStateAction<TEnemyType[]>>;
 }
 
 const Encounter = ({ ...props }: EncounterProps) => {
   return (
     <div className="border-transparent border-2 rounded-md p-3 mb-5 bg-white/10">
       <h2 className="text-xl pb-2">{props.encounterName} Encounter</h2>
-      {props.encounter.map((enemy, i) => (
+      {props.enemies.map((enemy, i) => (
         <Enemy
           key={`${enemy.name}${i}`}
           enemy={{
@@ -25,8 +25,8 @@ const Encounter = ({ ...props }: EncounterProps) => {
             experienceYield: enemy.experienceYield,
             goldYield: enemy.goldYield,
           }}
-          encounter={props.encounter}
-          setEncounter={props.setEncounter}
+          encounter={props.enemies}
+          setEncounter={props.setEnemies}
         />
       ))}
     </div>
