@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useContext } from "react";
 import { Button } from "antd";
 import { generateEncounter } from "../util/GenerateEncounter";
-import EnemyType from "../types/EnemyType";
+import TEnemyType from "../types/TEnemyType";
 import { PlayerContext } from "../context/PlayerContextProvider";
 
 interface CombatAreaProps {
@@ -10,7 +10,7 @@ interface CombatAreaProps {
   minNumberOfEnemies: number;
   maxNumberOfEnemies: number;
   elligibleEnemies: string[];
-  setEncounter: Dispatch<SetStateAction<EnemyType[]>>;
+  setEncounter: Dispatch<SetStateAction<TEnemyType[]>>;
   setEncounterName: Dispatch<SetStateAction<string>>;
   rewards?: Rewards;
 }

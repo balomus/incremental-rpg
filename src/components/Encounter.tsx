@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import EnemyType from "../types/EnemyType";
+import TEnemyType from "../types/TEnemyType";
 import Enemy from "./Enemies/Enemy";
 
 interface EncounterProps {
-  encounter: EnemyType[];
+  encounter: TEnemyType[];
   encounterName: string;
-  setEncounter: Dispatch<SetStateAction<EnemyType[]>>;
+  setEncounter: Dispatch<SetStateAction<TEnemyType[]>>;
 }
 
 const Encounter = ({ ...props }: EncounterProps) => {

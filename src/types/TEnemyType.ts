@@ -1,4 +1,4 @@
-export default interface EnemyType {
+export default interface TEnemyType {
   id: number;
   name: string;
   level: number;

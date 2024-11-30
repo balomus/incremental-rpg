@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction, useContext } from "react";
 import CombatArea from "./CombatArea";
-import EnemyType from "../types/EnemyType";
+import TEnemyType from "../types/TEnemyType";
 import { PlayerContext } from "../context/PlayerContextProvider";
 
 interface CombatAreasProps {
-  setEncounter: Dispatch<SetStateAction<EnemyType[]>>;
+  setEncounter: Dispatch<SetStateAction<TEnemyType[]>>;
   setEncounterName: Dispatch<SetStateAction<string>>;
 }
 

@@ -1,4 +1,4 @@
-export default interface Player {
+export default interface TPlayer {
   name: string;
   level: number;
   experience: number;

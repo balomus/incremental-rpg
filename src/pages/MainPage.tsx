@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Enemy from "../types/EnemyType";
+import Enemy from "../types/TEnemyType";
 import CombatAreas from "../components/CombatAreas";
 import Encounter from "../components/Encounter";
 import PlayerInfo from "../components/PlayerInfo";

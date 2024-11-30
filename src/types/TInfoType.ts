@@ -1,4 +1,4 @@
-export default interface Info {
+export default interface TInfo {
   name: string;
   level: number;
   currentExperience: number;

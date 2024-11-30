@@ -1,14 +1,14 @@
 import { Dispatch, SetStateAction, useContext } from "react";
-import EnemyType from "../../types/EnemyType";
+import TEnemyType from "../../types/TEnemyType";
 import Bar from "../Bar";
 import { Button } from "antd";
 import { PlayerContext } from "../../context/PlayerContextProvider";
-import Player from "../../types/Player";
+import TPlayer from "../../types/TPlayer";
 
 interface EnemyProps {
-  enemy: EnemyType;
-  encounter: EnemyType[];
-  setEncounter: Dispatch<SetStateAction<EnemyType[]>>;
+  enemy: TEnemyType;
+  encounter: TEnemyType[];
+  setEncounter: Dispatch<SetStateAction<TEnemyType[]>>;
 }
 
 const Enemy = ({ ...props }: EnemyProps) => {
@@ -37,7 +37,7 @@ const Enemy = ({ ...props }: EnemyProps) => {
     props.setEncounter([...newEncounterArray]);
   };
 
-  const updatePlayer = (newPlayer: Player) => {
+  const updatePlayer = (newPlayer: TPlayer) => {
     setPlayer({
       ...newPlayer,
     });
