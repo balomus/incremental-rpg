@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Enemy from "../types/TEnemyType";
 import CombatAreas from "../components/CombatAreas";
 import Encounter from "../components/Encounter";
 import PlayerInfo from "../components/PlayerInfo";
 import Tick from "../util/Tick";
+import TEnemyType from "../types/TEnemyType";
 
 const MainPage = () => {
-  const [encounter, setEncounter] = useState<Enemy[]>([]);
+  const [encounter, setEncounter] = useState<TEnemyType[]>([]);
   const [encounterName, setEncounterName] = useState<string>("");
 
   return (
