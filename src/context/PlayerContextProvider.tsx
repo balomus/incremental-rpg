@@ -69,16 +69,6 @@ const PlayerContextProvider = ({ children }: any) => {
     countDown(10, levelUpTitle, levelUpStr);
   };
 
-  // useEffect(() => {
-  //   if (player.currentHealth <= 0) {
-  //     killPlayer();
-  //   }
-
-  //   if (player.experience >= player.maxExperience) {
-  //     levelUpPlayer();
-  //   }
-  // }, [player]);
-
   const valueToShare = {
     player: player,
     setPlayer: setPlayer,

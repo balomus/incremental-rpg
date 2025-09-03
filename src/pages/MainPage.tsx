@@ -15,6 +15,8 @@ const MainPage = () => {
   useEffect(() => {
     if (player.currentHealth <= 0) {
       killPlayer();
+      setEnemies([]);
+      setEncounterName("");
     }
     if (player.experience >= player.maxExperience) {
       levelUpPlayer();
