@@ -26,11 +26,15 @@ interface Player {
 interface PlayerContextType {
   player: Player;
   setPlayer: (player: Player) => void;
+  killPlayer: () => void;
+  levelUpPlayer: () => void;
 }
 
 export const PlayerContext = createContext<PlayerContextType>({
   player: initialPlayerInfo,
   setPlayer: () => undefined,
+  killPlayer: () => undefined,
+  levelUpPlayer: () => undefined,
 });
 
 const PlayerContextProvider = ({ children }: any) => {
@@ -65,19 +69,21 @@ const PlayerContextProvider = ({ children }: any) => {
     countDown(5, levelUpTitle, levelUpStr);
   };
 
-  useEffect(() => {
-    if (player.currentHealth <= 0) {
-      killPlayer();
-    }
+  // useEffect(() => {
+  //   if (player.currentHealth <= 0) {
+  //     killPlayer();
+  //   }
 
-    if (player.experience >= player.maxExperience) {
-      levelUpPlayer();
-    }
-  }, [player]);
+  //   if (player.experience >= player.maxExperience) {
+  //     levelUpPlayer();
+  //   }
+  // }, [player]);
 
   const valueToShare = {
     player: player,
     setPlayer: setPlayer,
+    killPlayer: killPlayer,
+    levelUpPlayer: levelUpPlayer,
   };
 
   return (

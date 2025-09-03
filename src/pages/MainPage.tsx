@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CombatAreas from "../components/CombatAreas";
 import Encounter from "../components/Encounter";
 import PlayerInfo from "../components/PlayerInfo";
 import Tick from "../util/Tick";
 import TEnemyType from "../types/TEnemyType";
+import { PlayerContext } from "../context/PlayerContextProvider";
 
 const MainPage = () => {
   const [enemies, setEnemies] = useState<TEnemyType[]>([]);
   const [encounterName, setEncounterName] = useState<string>("");
+
+  const { player, killPlayer } = useContext(PlayerContext);
+
+  useEffect(() => {
+    if (player.currentHealth <= 0) {
+      killPlayer();
+    }
+  }, [player]);
 
   return (
     <div className={"m-5"}>
