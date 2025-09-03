@@ -10,11 +10,14 @@ const MainPage = () => {
   const [enemies, setEnemies] = useState<TEnemyType[]>([]);
   const [encounterName, setEncounterName] = useState<string>("");
 
-  const { player, killPlayer } = useContext(PlayerContext);
+  const { player, killPlayer, levelUpPlayer } = useContext(PlayerContext);
 
   useEffect(() => {
     if (player.currentHealth <= 0) {
       killPlayer();
+    }
+    if (player.experience >= player.maxExperience) {
+      levelUpPlayer();
     }
   }, [player]);
 

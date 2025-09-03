@@ -66,7 +66,7 @@ const PlayerContextProvider = ({ children }: any) => {
       experience: remainder,
     });
 
-    countDown(5, levelUpTitle, levelUpStr);
+    countDown(10, levelUpTitle, levelUpStr);
   };
 
   // useEffect(() => {
