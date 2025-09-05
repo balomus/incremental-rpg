@@ -4,6 +4,7 @@
   "experience": 1,
   "maxExperience": 10,
   "gold": 0,
+  "items": [],
   "currentHealth": 5,
   "maxHealth": 10,
   "currentMana": 5,

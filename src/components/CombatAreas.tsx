@@ -1,7 +1,8 @@
-import { Dispatch, SetStateAction, useContext } from "react";
+import { Dispatch, SetStateAction } from "react";
 import CombatArea from "./CombatArea";
 import TEnemyType from "../types/TEnemyType";
-import { PlayerContext } from "../context/PlayerContextProvider";
+import encounters from "../Encounters.json";
+import TEncounters from "../types/TEncounters";
 
 interface CombatAreasProps {
   setEnemies: Dispatch<SetStateAction<TEnemyType[]>>;
@@ -9,8 +10,6 @@ interface CombatAreasProps {
 }
 
 const CombatAreas = ({ ...props }: CombatAreasProps) => {
-  // const { player } = useContext(PlayerContext);
-
   return (
     <div className="border-transparent border-2 rounded-md p-3 mb-5 bg-white/10">
       <h2 className="text-xl pb-2">Select your encounter:</h2>
@@ -19,50 +18,19 @@ const CombatAreas = ({ ...props }: CombatAreasProps) => {
         <div>Required Level</div>
         <div>Reward for Completion</div>
       </div>
-      <CombatArea
-        name={"Grassy Plains"}
-        levelRequirement={1}
-        minNumberOfEnemies={2}
-        maxNumberOfEnemies={3}
-        elligibleEnemies={["Rat", "Slime", "Snake"]}
-        setEncounter={props.setEnemies}
-        setEncounterName={props.setEncounterName}
-        rewards={{ gold: 5, experience: 5 }}
-      />
-      <CombatArea
-        name={"Slime Cave"}
-        levelRequirement={2}
-        minNumberOfEnemies={4}
-        maxNumberOfEnemies={7}
-        elligibleEnemies={["Slime"]}
-        setEncounter={props.setEnemies}
-        setEncounterName={props.setEncounterName}
-        rewards={{ experience: 10 }}
-      />
-
-      <CombatArea
-        name={"test1"}
-        levelRequirement={3}
-        minNumberOfEnemies={4}
-        maxNumberOfEnemies={7}
-        elligibleEnemies={["Slime"]}
-        setEncounter={props.setEnemies}
-        setEncounterName={props.setEncounterName}
-        rewards={{
-          items: ["Fire sword", "Ice sword"],
-          experience: 24,
-          gold: 7,
-        }}
-      />
-      <CombatArea
-        name={"test2"}
-        levelRequirement={4}
-        minNumberOfEnemies={4}
-        maxNumberOfEnemies={7}
-        elligibleEnemies={["Slime"]}
-        setEncounter={props.setEnemies}
-        setEncounterName={props.setEncounterName}
-      />
+      {encounters.map((encounter: TEncounters, index: number) => (
+        <CombatArea
+          name={encounter.name}
+          levelRequirement={encounter.levelRequirement}
+          minNumberOfEnemies={encounter.minNumberOfEnemies}
+          maxNumberOfEnemies={encounter.maxNumberOfEnemies}
+          elligibleEnemies={encounter.elligibleEnemies}
+          setEncounter={props.setEnemies}
+          setEncounterName={props.setEncounterName}
+          rewards={encounter.rewards}
+          key={index}
+        />
+      ))}
     </div>
   );
 };

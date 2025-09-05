@@ -4,6 +4,7 @@ export default interface TPlayer {
   experience: number;
   maxExperience: number;
   gold: number;
+  items: string[];
   currentHealth: number;
   maxHealth: number;
   currentMana: number;

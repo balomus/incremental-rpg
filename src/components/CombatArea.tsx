@@ -1,25 +1,8 @@
-import { Dispatch, SetStateAction, useContext } from "react";
+import { useContext } from "react";
 import { Button } from "antd";
 import { generateEncounter } from "../util/GenerateEncounter";
-import TEnemyType from "../types/TEnemyType";
 import { PlayerContext } from "../context/PlayerContextProvider";
-
-interface CombatAreaProps {
-  name: string;
-  levelRequirement: number;
-  minNumberOfEnemies: number;
-  maxNumberOfEnemies: number;
-  elligibleEnemies: string[];
-  setEncounter: Dispatch<SetStateAction<TEnemyType[]>>;
-  setEncounterName: Dispatch<SetStateAction<string>>;
-  rewards?: Rewards;
-}
-
-interface Rewards {
-  gold?: number;
-  experience?: number;
-  items?: string[];
-}
+import TCombatArea from "../types/TCombatArea";
 
 const getNumberOfEnemies = (min: number, max: number) => {
   min = Math.ceil(min);
@@ -27,7 +10,7 @@ const getNumberOfEnemies = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const CombatArea = ({ ...props }: CombatAreaProps) => {
+const CombatArea = ({ ...props }: TCombatArea) => {
   const { player } = useContext(PlayerContext);
 
   const getRewardString = () => {
@@ -61,7 +44,7 @@ const CombatArea = ({ ...props }: CombatAreaProps) => {
     <div className="grid grid-cols-4 gap-4 pb-4 text-center items-center">
       <div>{props.name}</div>
       <div>{props.levelRequirement}</div>
-      {props.rewards ? <>{getRewardString()}</> : <>N/A</>}
+      {props.rewards ? <>{getRewardString()}</> : <i>No Rewards</i>}
       <div>
         <Button
           type="primary"

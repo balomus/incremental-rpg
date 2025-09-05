@@ -1,17 +1,12 @@
 import { Dispatch, SetStateAction, useContext } from "react";
-import TEnemyType from "../../types/TEnemyType";
 import Bar from "../Bar";
 import { Button } from "antd";
 import { PlayerContext } from "../../context/PlayerContextProvider";
 import TPlayer from "../../types/TPlayer";
+import TEnemy from "../../types/TEnemy";
+import TRewards from "../../types/TRewards";
 
-interface EnemyProps {
-  enemy: TEnemyType;
-  encounter: TEnemyType[];
-  setEncounter: Dispatch<SetStateAction<TEnemyType[]>>;
-}
-
-const Enemy = ({ ...props }: EnemyProps) => {
+const Enemy = ({ ...props }: TEnemy) => {
   const { player, setPlayer } = useContext(PlayerContext);
   const index = props.encounter.findIndex((e) => e.id === props.enemy.id);
   const newEncounterArray = props.encounter;
@@ -34,15 +29,29 @@ const Enemy = ({ ...props }: EnemyProps) => {
     newPlayer.experience += props.enemy.experienceYield;
     newPlayer.gold += props.enemy.goldYield;
     if (newEncounterArray.length === 1) {
-      //
+      // finished encounter
+      console.log("hey", props.encounterRewards);
+      if (props.encounterRewards) {
+        rewardPlayer(props.encounterRewards);
+      }
     }
     newEncounterArray.splice(index, 1);
     props.setEncounter([...newEncounterArray]);
   };
 
+  const rewardPlayer = (rewards: TRewards) => {
+    newPlayer.gold += rewards.gold ? rewards.gold : 0;
+    newPlayer.experience += rewards.experience ? rewards.experience : 0;
+    newPlayer.items = [
+      ...newPlayer.items,
+      ...(rewards.items ? rewards.items : []),
+    ];
+  };
+
   const updatePlayer = (newPlayer: TPlayer) => {
     setPlayer({
       ...newPlayer,
+      // items: [...newPlayer.items],
     });
   };
 

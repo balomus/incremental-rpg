@@ -1,14 +1,8 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import TEnemyType from "../types/TEnemyType";
 import Enemy from "./Enemies/Enemy";
+import TEncounter from "../types/TEncounter";
+import encounters from "../Encounters.json";
 
-interface EncounterProps {
-  enemies: TEnemyType[];
-  encounterName: string;
-  setEnemies: Dispatch<SetStateAction<TEnemyType[]>>;
-}
-
-const Encounter = ({ ...props }: EncounterProps) => {
+const Encounter = ({ ...props }: TEncounter) => {
   return (
     <div className="border-transparent border-2 rounded-md p-3 mb-5 bg-white/10">
       <h2 className="text-xl pb-2">{props.encounterName} Encounter</h2>
@@ -27,6 +21,11 @@ const Encounter = ({ ...props }: EncounterProps) => {
           }}
           encounter={props.enemies}
           setEncounter={props.setEnemies}
+          encounterRewards={
+            encounters[
+              encounters.findIndex((e) => e.name === props.encounterName)
+            ].rewards
+          }
         />
       ))}
     </div>

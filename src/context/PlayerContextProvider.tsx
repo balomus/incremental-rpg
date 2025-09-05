@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import initialPlayerInfo from "../mocks/PlayerInfo.json";
 import { countDown } from "../util/ModalCountdown";
 import {
@@ -7,6 +7,7 @@ import {
   levelUpStr,
   levelUpTitle,
 } from "../util/Strings";
+import TRewards from "../types/TRewards";
 
 interface Player {
   name: string;
@@ -14,6 +15,7 @@ interface Player {
   experience: number;
   maxExperience: number;
   gold: number;
+  items: string[];
   currentHealth: number;
   maxHealth: number;
   currentMana: number;
@@ -28,6 +30,7 @@ interface PlayerContextType {
   setPlayer: (player: Player) => void;
   killPlayer: () => void;
   levelUpPlayer: () => void;
+  rewardPlayer: (rewards: TRewards) => void;
 }
 
 export const PlayerContext = createContext<PlayerContextType>({
@@ -35,6 +38,7 @@ export const PlayerContext = createContext<PlayerContextType>({
   setPlayer: () => undefined,
   killPlayer: () => undefined,
   levelUpPlayer: () => undefined,
+  rewardPlayer: () => undefined,
 });
 
 const PlayerContextProvider = ({ children }: any) => {
@@ -69,11 +73,30 @@ const PlayerContextProvider = ({ children }: any) => {
     countDown(10, levelUpTitle, levelUpStr);
   };
 
+  const rewardPlayer = (rewards: TRewards) => {
+    console.log("hi", rewards?.gold ? player.gold + rewards.gold : player.gold);
+    const newGold = rewards?.gold ? player.gold + rewards.gold : player.gold;
+    const newExperience = rewards?.experience
+      ? player.experience + rewards.experience
+      : player.experience;
+    const newItems = rewards?.items
+      ? [...player.items, ...rewards.items]
+      : player.items;
+
+    setPlayer({
+      ...player,
+      gold: newGold,
+      experience: newExperience,
+      items: newItems,
+    });
+  };
+
   const valueToShare = {
     player: player,
     setPlayer: setPlayer,
     killPlayer: killPlayer,
     levelUpPlayer: levelUpPlayer,
+    rewardPlayer: rewardPlayer,
   };
 
   return (
