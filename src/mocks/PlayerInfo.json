@@ -11,5 +11,6 @@
   "maxMana": 10,
   "healthIncrement": 1,
   "manaIncrement": 1,
-  "strength": 1
+  "strength": 1,
+  "completedEncounters": []
 }

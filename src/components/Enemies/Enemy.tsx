@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useContext } from "react";
+import { useContext } from "react";
 import Bar from "../Bar";
 import { Button } from "antd";
 import { PlayerContext } from "../../context/PlayerContextProvider";
@@ -10,7 +10,7 @@ const Enemy = ({ ...props }: TEnemy) => {
   const { player, setPlayer } = useContext(PlayerContext);
   const index = props.encounter.findIndex((e) => e.id === props.enemy.id);
   const newEncounterArray = props.encounter;
-  const newPlayer = player;
+  const newPlayer: TPlayer = player;
 
   const damagePlayer = (damage: number) => {
     newPlayer.currentHealth -= damage;
@@ -30,7 +30,6 @@ const Enemy = ({ ...props }: TEnemy) => {
     newPlayer.gold += props.enemy.goldYield;
     if (newEncounterArray.length === 1) {
       // finished encounter
-      console.log("hey", props.encounterRewards);
       if (props.encounterRewards) {
         rewardPlayer(props.encounterRewards);
       }

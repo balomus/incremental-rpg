@@ -8,26 +8,11 @@ import {
   levelUpTitle,
 } from "../util/Strings";
 import TRewards from "../types/TRewards";
-
-interface Player {
-  name: string;
-  level: number;
-  experience: number;
-  maxExperience: number;
-  gold: number;
-  items: string[];
-  currentHealth: number;
-  maxHealth: number;
-  currentMana: number;
-  maxMana: number;
-  healthIncrement: number;
-  manaIncrement: number;
-  strength: number;
-}
+import TPlayer from "../types/TPlayer";
 
 interface PlayerContextType {
-  player: Player;
-  setPlayer: (player: Player) => void;
+  player: TPlayer;
+  setPlayer: (player: TPlayer) => void;
   killPlayer: () => void;
   levelUpPlayer: () => void;
   rewardPlayer: (rewards: TRewards) => void;
@@ -42,7 +27,7 @@ export const PlayerContext = createContext<PlayerContextType>({
 });
 
 const PlayerContextProvider = ({ children }: any) => {
-  const [player, setPlayer] = useState<Player>(initialPlayerInfo);
+  const [player, setPlayer] = useState<TPlayer>(initialPlayerInfo);
 
   const killPlayer = () => {
     setPlayer({
@@ -74,7 +59,6 @@ const PlayerContextProvider = ({ children }: any) => {
   };
 
   const rewardPlayer = (rewards: TRewards) => {
-    console.log("hi", rewards?.gold ? player.gold + rewards.gold : player.gold);
     const newGold = rewards?.gold ? player.gold + rewards.gold : player.gold;
     const newExperience = rewards?.experience
       ? player.experience + rewards.experience

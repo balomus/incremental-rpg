@@ -12,4 +12,5 @@ export default interface TPlayer {
   healthIncrement: number;
   manaIncrement: number;
   strength: number;
+  completedEncounters: string[];
 }
