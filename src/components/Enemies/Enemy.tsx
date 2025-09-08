@@ -39,18 +39,23 @@ const Enemy = ({ ...props }: TEnemy) => {
   };
 
   const rewardPlayer = (rewards: TRewards) => {
-    newPlayer.gold += rewards.gold ? rewards.gold : 0;
-    newPlayer.experience += rewards.experience ? rewards.experience : 0;
-    newPlayer.items = [
-      ...newPlayer.items,
-      ...(rewards.items ? rewards.items : []),
-    ];
+    if (!newPlayer.completedEncounters.includes(props.encounterName)) {
+      newPlayer.gold += rewards.gold ? rewards.gold : 0;
+      newPlayer.experience += rewards.experience ? rewards.experience : 0;
+      newPlayer.items = [
+        ...newPlayer.items,
+        ...(rewards.items ? rewards.items : []),
+      ];
+      newPlayer.completedEncounters = [
+        ...newPlayer.completedEncounters,
+        props.encounterName,
+      ];
+    }
   };
 
   const updatePlayer = (newPlayer: TPlayer) => {
     setPlayer({
       ...newPlayer,
-      // items: [...newPlayer.items],
     });
   };
 

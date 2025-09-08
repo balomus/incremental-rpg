@@ -7,7 +7,6 @@ import {
   levelUpStr,
   levelUpTitle,
 } from "../util/Strings";
-import TRewards from "../types/TRewards";
 import TPlayer from "../types/TPlayer";
 
 interface PlayerContextType {
@@ -15,7 +14,6 @@ interface PlayerContextType {
   setPlayer: (player: TPlayer) => void;
   killPlayer: () => void;
   levelUpPlayer: () => void;
-  rewardPlayer: (rewards: TRewards) => void;
 }
 
 export const PlayerContext = createContext<PlayerContextType>({
@@ -23,7 +21,6 @@ export const PlayerContext = createContext<PlayerContextType>({
   setPlayer: () => undefined,
   killPlayer: () => undefined,
   levelUpPlayer: () => undefined,
-  rewardPlayer: () => undefined,
 });
 
 const PlayerContextProvider = ({ children }: any) => {
@@ -58,29 +55,11 @@ const PlayerContextProvider = ({ children }: any) => {
     countDown(10, levelUpTitle, levelUpStr);
   };
 
-  const rewardPlayer = (rewards: TRewards) => {
-    const newGold = rewards?.gold ? player.gold + rewards.gold : player.gold;
-    const newExperience = rewards?.experience
-      ? player.experience + rewards.experience
-      : player.experience;
-    const newItems = rewards?.items
-      ? [...player.items, ...rewards.items]
-      : player.items;
-
-    setPlayer({
-      ...player,
-      gold: newGold,
-      experience: newExperience,
-      items: newItems,
-    });
-  };
-
   const valueToShare = {
     player: player,
     setPlayer: setPlayer,
     killPlayer: killPlayer,
     levelUpPlayer: levelUpPlayer,
-    rewardPlayer: rewardPlayer,
   };
 
   return (

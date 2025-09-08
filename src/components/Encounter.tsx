@@ -25,6 +25,7 @@ const Encounter = ({ ...props }: TEncounter) => {
             goldYield: enemy.goldYield,
           }}
           encounter={props.enemies}
+          encounterName={props.encounterName}
           setEncounter={props.setEnemies}
           encounterRewards={
             // player.

@@ -15,27 +15,38 @@ const CombatArea = ({ ...props }: TCombatArea) => {
 
   const getRewardString = () => {
     let rewardsString = "";
-    const addComma = () => {
-      if (rewardsString !== "") {
-        rewardsString += ", ";
-      }
-    };
+    const encounterAlreadyComplete = player.completedEncounters.includes(
+      props.name
+    );
+    if (props.rewards) {
+      const addComma = () => {
+        if (rewardsString !== "") {
+          rewardsString += ", ";
+        }
+      };
 
-    if (props.rewards?.gold) {
-      addComma();
-      rewardsString += `${props.rewards.gold} gold`;
-    }
-    if (props.rewards?.experience) {
-      addComma();
-      rewardsString += `${props.rewards.experience} experience`;
-    }
-    if (props.rewards?.items) {
-      props.rewards.items.map((item) => {
+      if (props.rewards?.gold) {
         addComma();
-        rewardsString += item;
-      });
+        rewardsString += `${props.rewards.gold} gold`;
+      }
+      if (props.rewards?.experience) {
+        addComma();
+        rewardsString += `${props.rewards.experience} experience`;
+      }
+      if (props.rewards?.items) {
+        props.rewards.items.map((item) => {
+          addComma();
+          rewardsString += item;
+        });
+      }
+    } else {
+      rewardsString = "No Rewards";
     }
-    return rewardsString;
+    return encounterAlreadyComplete ? (
+      <s>{rewardsString}</s>
+    ) : (
+      <>{rewardsString}</>
+    );
   };
 
   if (player.level + 1 < props.levelRequirement) return <></>;
@@ -44,7 +55,7 @@ const CombatArea = ({ ...props }: TCombatArea) => {
     <div className="grid grid-cols-4 gap-4 pb-4 text-center items-center">
       <div>{props.name}</div>
       <div>{props.levelRequirement}</div>
-      {props.rewards ? <>{getRewardString()}</> : <i>No Rewards</i>}
+      {getRewardString()}
       <div>
         <Button
           type="primary"
