@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import CombatArea from "./CombatArea";
 import TEnemyType from "../types/TEnemyType";
-import encounters from "../Encounters.json";
+import { encounters } from "../Encounters";
 import TEncounters from "../types/TEncounters";
 
 interface CombatAreasProps {

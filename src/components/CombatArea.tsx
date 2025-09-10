@@ -36,7 +36,7 @@ const CombatArea = ({ ...props }: TCombatArea) => {
       if (props.rewards?.items) {
         props.rewards.items.map((item) => {
           addComma();
-          rewardsString += item;
+          rewardsString += item.name;
         });
       }
     } else {

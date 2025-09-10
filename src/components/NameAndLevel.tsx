@@ -12,7 +12,9 @@ const NameAndLevel = () => {
         XP: {player.experience} / {player.maxExperience}
       </div>
       <div>Gold: {player.gold}</div>
-      {player.items.length > 0 && <div>Items: {player.items.join(", ")}</div>}
+      {player.items.length > 0 && (
+        <div>Items: {player.items.map((item) => item.name).join(", ")}</div>
+      )}
     </div>
   );
 };

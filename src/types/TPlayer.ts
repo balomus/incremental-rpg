@@ -1,10 +1,12 @@
+import TItem from "./TItem";
+
 export default interface TPlayer {
   name: string;
   level: number;
   experience: number;
   maxExperience: number;
   gold: number;
-  items: string[];
+  items: TItem[];
   currentHealth: number;
   maxHealth: number;
   currentMana: number;

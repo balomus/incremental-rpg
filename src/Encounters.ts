@@ -1,0 +1,53 @@
+import TEncounters from "./types/TEncounters";
+import { ItemType } from "./types/TItem";
+
+export const encounters: TEncounters[] = [
+  {
+    name: "Grassy Plains",
+    levelRequirement: 1,
+    minNumberOfEnemies: 2,
+    maxNumberOfEnemies: 3,
+    elligibleEnemies: ["Rat", "Slime", "Snake"],
+    rewards: { gold: 5, experience: 5 },
+  },
+  {
+    name: "Slime Cave",
+    levelRequirement: 2,
+    minNumberOfEnemies: 4,
+    maxNumberOfEnemies: 7,
+    elligibleEnemies: ["Slime"],
+    rewards: { experience: 10 },
+  },
+  {
+    name: "test1",
+    levelRequirement: 3,
+    minNumberOfEnemies: 4,
+    maxNumberOfEnemies: 7,
+    elligibleEnemies: ["Slime"],
+    rewards: {
+      items: [
+        {
+          name: "Fire Sword",
+          description: "Fire Sword",
+          quantity: 1,
+          itemType: ItemType.EQUIPMENT,
+        },
+        {
+          name: "Ice Sword",
+          description: "Ice Sword",
+          quantity: 1,
+          itemType: ItemType.EQUIPMENT,
+        },
+      ],
+      experience: 24,
+      gold: 7,
+    },
+  },
+  {
+    name: "test2",
+    levelRequirement: 4,
+    minNumberOfEnemies: 4,
+    maxNumberOfEnemies: 7,
+    elligibleEnemies: ["Slime"],
+  },
+];
