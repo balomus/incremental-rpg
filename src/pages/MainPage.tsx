@@ -24,7 +24,7 @@ const MainPage = () => {
   }, [player]);
 
   return (
-    <div className={"m-5"}>
+    <div className={"m-5 max-w-2xl ml-auto mr-auto"}>
       <Tick />
       <PlayerInfo />
 

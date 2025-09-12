@@ -60,32 +60,44 @@ const Enemy = ({ ...props }: TEnemy) => {
   };
 
   return (
-    <div className="flex space-x-4 pb-4 items-center">
-      <div className="w-32">
-        {props.enemy.name} {props.enemy.id} (lvl {props.enemy.level})
+    <>
+      <div className="flex flex-col items-center w-full">
+        {props.enemy.name} (lvl {props.enemy.level})
       </div>
-      <div className="flex flex-col grow justify-center">
-        <Bar
-          type="health"
-          currentValue={props.enemy.health}
-          maxValue={props.enemy.maxHealth}
-        />
+      <div className="flex space-x-4 pb-4 items-center">
+        <div className="flex flex-col grow justify-center">
+          <div className="flex flex-col w-full items-center">
+            <img
+              src={`/${props.enemy.name}.png`}
+              alt={props.enemy.name}
+              className="w-1/2"
+            />
+          </div>
+          <Bar
+            type="health"
+            currentValue={props.enemy.health}
+            maxValue={props.enemy.maxHealth}
+          />
+        </div>
       </div>
-
-      <Button
-        type="primary"
-        danger
-        onClick={() => {
-          damagePlayer(props.enemy.damage);
-          damageEnemy(player.strength);
-          updatePlayer(newPlayer);
-        }}
-      >
-        Attack
-      </Button>
-      <Button type="primary">Magic</Button>
-      <Button>Item</Button>
-    </div>
+      <div className="flex flex-col items-center w-full">
+        <div className="flex space-x-4 pb-4 items-center">
+          <Button
+            type="primary"
+            danger
+            onClick={() => {
+              damagePlayer(props.enemy.damage);
+              damageEnemy(player.strength);
+              updatePlayer(newPlayer);
+            }}
+          >
+            Attack
+          </Button>
+          <Button type="primary">Magic</Button>
+          <Button>Item</Button>
+        </div>
+      </div>
+    </>
   );
 };
 

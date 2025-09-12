@@ -23,7 +23,6 @@ const Encounter = ({ ...props }: TEncounter) => {
           encounterName={props.encounterName}
           setEncounter={props.setEnemies}
           encounterRewards={
-            // player.
             encounters[
               encounters.findIndex((e) => e.name === props.encounterName)
             ].rewards

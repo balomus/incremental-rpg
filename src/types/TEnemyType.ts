@@ -1,3 +1,5 @@
+import TItem from "./TItem";
+
 export default interface TEnemyType {
   id: number;
   name: string;
@@ -7,5 +9,5 @@ export default interface TEnemyType {
   damage: number;
   experienceYield: number;
   goldYield: number;
-  itemYield?: any;
+  itemYield?: [TItem];
 }
